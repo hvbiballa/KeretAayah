@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'availability_calendar' => 'Kalendar Ketersediaan',
+    'availability_copy' => 'Pilih tarikh untuk lihat slot masa yang tersedia.',
+    'previous_month' => 'Bulan sebelumnya',
+    'next_month' => 'Bulan seterusnya',
+    'loading_availability' => 'Sedang memuatkan ketersediaan...',
+    'load_error' => 'Ketersediaan tidak dapat dimuatkan. Sila cuba lagi.',
+    'load_picker_error' => 'Ketersediaan tidak dapat dimuatkan. Anda masih boleh pilih tarikh.',
+    'no_hourly_slots' => 'Tiada slot jam tersedia.',
+    'no_daily_cars' => 'Tiada kereta yang boleh menerima tempahan harian pada tarikh ini.',
+    'available_cars_count' => ':count kereta tersedia untuk tarikh ini.',
+    'range_with_count' => ':range · :count kereta',
+    'select_date' => 'Pilih Tarikh',
+    'select_time' => 'Pilih Masa',
+    'malaysia_time' => 'Waktu Malaysia (MYT)',
+    'tap_preferred_date' => 'Tekan tarikh pilihan anda',
+    'selected_time' => 'Masa Dipilih',
+    'hour' => 'Jam',
+    'minute' => 'Minit',
+    'period' => 'AM / PM',
+    'exact' => 'Tepat',
+    'weekdays' => [
+        'sun' => 'Ahd',
+        'mon' => 'Isn',
+        'tue' => 'Sel',
+        'wed' => 'Rab',
+        'thu' => 'Kha',
+        'fri' => 'Jum',
+        'sat' => 'Sab',
+    ],
+];

@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'availability_calendar' => 'Availability Calendar',
+    'availability_copy' => 'Select a date to view available time ranges.',
+    'previous_month' => 'Previous month',
+    'next_month' => 'Next month',
+    'loading_availability' => 'Loading availability...',
+    'load_error' => 'Availability could not be loaded. Please try again.',
+    'load_picker_error' => 'Availability could not be loaded. You may still select a date.',
+    'no_hourly_slots' => 'No hourly slots available.',
+    'no_daily_cars' => 'No cars can take a daily booking on this date.',
+    'available_cars_count' => ':count cars available for this date.',
+    'range_with_count' => ':range · :count cars',
+    'select_date' => 'Select Date',
+    'select_time' => 'Select Time',
+    'malaysia_time' => 'Malaysia Time (MYT)',
+    'tap_preferred_date' => 'Tap your preferred date',
+    'selected_time' => 'Selected Time',
+    'hour' => 'Hour',
+    'minute' => 'Minute',
+    'period' => 'Period',
+    'exact' => 'Exact',
+    'weekdays' => [
+        'sun' => 'Sun',
+        'mon' => 'Mon',
+        'tue' => 'Tue',
+        'wed' => 'Wed',
+        'thu' => 'Thu',
+        'fri' => 'Fri',
+        'sat' => 'Sat',
+    ],
+];
