@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\VerificationController;
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\CustomerDashboardController;
@@ -13,7 +14,6 @@ use App\Http\Controllers\Frontend\PaymentProofController as FrontendPaymentProof
 use App\Http\Controllers\Frontend\VerificationController as FrontendVerificationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PaymentProofController;
 use App\Http\Controllers\VerificationDocumentController;
 use App\Models\Car;
@@ -81,6 +81,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/verification', [FrontendVerificationController::class, 'store'])->name('customer.verification.store');
     Route::get('/verification/documents/{verification}/{document}', VerificationDocumentController::class)->name('customer.verification.document');
 
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::get('/bookings/confirm', [FrontendRentalController::class, 'confirm'])->name('bookings.confirm');
     Route::post('/rentals', [FrontendRentalController::class, 'store'])->middleware(['customer.email.verified', 'customer.verified'])->name('rentals.store');
     Route::get('/my-bookings', [FrontendRentalController::class, 'index'])->name('bookings.index');
@@ -90,11 +94,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/rentals/{rental}/cancel', [FrontendRentalController::class, 'cancel'])->name('bookings.cancel');
     Route::post('/rentals/{rental}/payment-proof', [FrontendPaymentProofController::class, 'store'])->name('bookings.payment-proof.store');
     Route::get('/payments/{payment}/proof', PaymentProofController::class)->name('payments.proof');
-
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
