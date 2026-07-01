@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Verification;
 
 use App\Http\Controllers\Controller;
 use App\Models\CustomerVerification;
 use App\Models\User;
-use App\Notifications\VerificationStatusUpdatedNotification;
+use App\Notifications\Verification\VerificationStatusUpdatedNotification;
 use App\Support\VerificationDocumentData;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -13,11 +13,11 @@ use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Throwable;
 
-class VerificationController extends Controller
+class AdminVerificationController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Admin/VerificationsPage', [
+        return Inertia::render('Verification/VerificationsPage', [
             'customers' => User::where('role', 'customer')
                 ->with('verification')
                 ->latest()

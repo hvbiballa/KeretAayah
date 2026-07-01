@@ -4,18 +4,18 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
-use App\Http\Controllers\Admin\VerificationController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\CustomerDashboardController;
 use App\Http\Controllers\Frontend\RentalController as FrontendRentalController;
 use App\Http\Controllers\Frontend\PaymentProofController as FrontendPaymentProofController;
-use App\Http\Controllers\Frontend\VerificationController as FrontendVerificationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PaymentProofController;
-use App\Http\Controllers\VerificationDocumentController;
+use App\Http\Controllers\Verification\AdminVerificationController;
+use App\Http\Controllers\Verification\VerificationController as FrontendVerificationController;
+use App\Http\Controllers\Verification\VerificationDocumentController;
 use App\Models\Car;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -59,9 +59,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(
         Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
         // customer verification
-        Route::get('/verifications', [VerificationController::class, 'index'])->name('verifications.index');
-        Route::post('/verifications/{customer}/approve', [VerificationController::class, 'approve'])->name('verifications.approve');
-        Route::post('/verifications/{customer}/status', [VerificationController::class, 'updateStatus'])->name('verifications.status');
+        Route::get('/verifications', [AdminVerificationController::class, 'index'])->name('verifications.index');
+        Route::post('/verifications/{customer}/approve', [AdminVerificationController::class, 'approve'])->name('verifications.approve');
+        Route::post('/verifications/{customer}/status', [AdminVerificationController::class, 'updateStatus'])->name('verifications.status');
     }
 );
 

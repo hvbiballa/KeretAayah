@@ -220,13 +220,13 @@ it('renders the customer and admin verification pages', function () {
         ->get(route('customer.verification.index'))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Frontend/VerificationPage')
+            ->component('Verification/VerificationPage')
             ->has('verification'));
 
     $this->actingAs($admin)
         ->get(route('verifications.index'))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Admin/VerificationsPage')
+            ->component('Verification/VerificationsPage')
             ->has('customers'));
 });

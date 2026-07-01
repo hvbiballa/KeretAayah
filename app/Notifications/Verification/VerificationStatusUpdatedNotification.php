@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace App\Notifications\Verification;
 
 use App\Models\CustomerVerification;
 use Illuminate\Bus\Queueable;

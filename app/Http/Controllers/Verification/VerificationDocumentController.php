@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Verification;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\CustomerVerification;
 use Illuminate\Http\Request;

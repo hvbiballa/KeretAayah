@@ -67,7 +67,7 @@ class CustomerVerification extends Model
             return 'Expired';
         }
 
-        return $this->status;
+        return $this->status ?? self::STATUS_PENDING;
     }
 
     public function getBookingRestrictionMessageAttribute(): string
