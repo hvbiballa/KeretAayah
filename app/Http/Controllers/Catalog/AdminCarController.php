@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Catalog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
-class CarController extends Controller
+class AdminCarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class CarController extends Controller
     {
         $cars = Car::with('images')->latest()->get();
 
-        return Inertia::render('Admin/CarsPage', [
+        return Inertia::render('Catalog/AdminCarsPage', [
             'cars' => $cars
         ]);
     }
@@ -29,7 +29,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/CarCreate');
+        return Inertia::render('Catalog/CarCreate');
     }
 
     /**
@@ -93,7 +93,7 @@ class CarController extends Controller
     {
         $car = Car::with('images')->findOrFail($id);
 
-        return Inertia::render('Admin/CarEdit', [
+        return Inertia::render('Catalog/CarEdit', [
             'car' => $car
         ]);
     }

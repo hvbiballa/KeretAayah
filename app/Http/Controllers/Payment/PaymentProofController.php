@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\Rental;
 use App\Models\User;
-use App\Notifications\PaymentProofSubmittedNotification;
+use App\Notifications\Payment\PaymentProofSubmittedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Services\RentalLifecycleService;
-use App\Notifications\PaymentStatusUpdatedNotification;
+use App\Notifications\Payment\PaymentStatusUpdatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Throwable;
 
-class PaymentController extends Controller
+class AdminPaymentController extends Controller
 {
     public function __construct(
         private RentalLifecycleService $rentalLifecycle,
@@ -20,7 +20,7 @@ class PaymentController extends Controller
 
     public function index()
     {
-        return Inertia::render('Admin/PaymentsPage', [
+        return Inertia::render('Payment/PaymentsPage', [
             'payments' => Payment::with(['rental.user', 'rental.car', 'receiver'])
                 ->latest()
                 ->get(),
@@ -29,7 +29,7 @@ class PaymentController extends Controller
 
     public function edit(Payment $payment)
     {
-        return Inertia::render('Admin/PaymentEdit', [
+        return Inertia::render('Payment/PaymentEdit', [
             'payment' => $payment->load(['rental.user', 'rental.car', 'receiver']),
         ]);
     }

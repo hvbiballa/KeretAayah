@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Catalog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
-use App\Services\RentalAvailabilityService;
+use App\Services\Catalog\RentalAvailabilityService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -25,7 +25,7 @@ class CarController extends Controller
          * filter experience is being redesigned.
          */
 
-        return Inertia::render('Frontend/CarsPage', [
+        return Inertia::render('Catalog/CarsPage', [
             'cars' => $cars->get(),
         ]);
     }
@@ -33,7 +33,7 @@ class CarController extends Controller
     function show(Request $request, string $id)
     {
         $car = Car::with('images')->findOrFail($id);
-        return Inertia::render('Frontend/CarDetailsPage', [
+        return Inertia::render('Catalog/CarDetailsPage', [
             'car' => $car,
         ]);
     }

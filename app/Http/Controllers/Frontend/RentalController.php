@@ -10,7 +10,7 @@ use App\Models\Rental;
 use App\Models\User;
 use App\Services\BookingScheduleService;
 use App\Services\RentalLifecycleService;
-use App\Services\RentalAvailabilityService;
+use App\Services\Catalog\RentalAvailabilityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;

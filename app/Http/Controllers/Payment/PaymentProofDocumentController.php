@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Payment;
 
+use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PaymentProofController extends Controller
+class PaymentProofDocumentController extends Controller
 {
     public function __invoke(Request $request, Payment $payment)
     {

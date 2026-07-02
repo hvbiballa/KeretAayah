@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Catalog\AdminCarController;
+use App\Http\Controllers\Catalog\CarController as FrontendCarController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\CustomerDashboardController;
 use App\Http\Controllers\Frontend\RentalController as FrontendRentalController;
-use App\Http\Controllers\Frontend\PaymentProofController as FrontendPaymentProofController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\PaymentProofController;
+use App\Http\Controllers\Payment\AdminPaymentController;
+use App\Http\Controllers\Payment\PaymentProofController as FrontendPaymentProofController;
+use App\Http\Controllers\Payment\PaymentProofDocumentController;
 use App\Http\Controllers\Verification\AdminVerificationController;
 use App\Http\Controllers\Verification\VerificationController as FrontendVerificationController;
 use App\Http\Controllers\Verification\VerificationDocumentController;
@@ -37,13 +37,13 @@ Route::get('/cars/{id}', [FrontendCarController::class, 'show'])->name('cars.sho
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(
     function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
-        Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
-        Route::post('/cars', [CarController::class, 'store'])->name('cars.store');
-        // Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
-        Route::get('/cars/edit/{id}', [CarController::class, 'edit'])->name('cars.edit');
-        Route::post('/cars/{id}', [CarController::class, 'update'])->name('cars.update');
-        Route::delete('/cars/{id}', [CarController::class, 'destroy'])->name('cars.destroy');
+        Route::get('/cars', [AdminCarController::class, 'index'])->name('cars.index');
+        Route::get('/cars/create', [AdminCarController::class, 'create'])->name('cars.create');
+        Route::post('/cars', [AdminCarController::class, 'store'])->name('cars.store');
+        // Route::get('/cars/{id}', [AdminCarController::class, 'show'])->name('cars.show');
+        Route::get('/cars/edit/{id}', [AdminCarController::class, 'edit'])->name('cars.edit');
+        Route::post('/cars/{id}', [AdminCarController::class, 'update'])->name('cars.update');
+        Route::delete('/cars/{id}', [AdminCarController::class, 'destroy'])->name('cars.destroy');
 
 
         // rental
@@ -67,9 +67,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(
 
 Route::middleware(['auth', 'payment.reviewer'])->prefix('admin')->group(
     function () {
-        Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
-        Route::get('/payments/edit/{payment}', [PaymentController::class, 'edit'])->name('payments.edit');
-        Route::post('/payments/{payment}', [PaymentController::class, 'update'])->name('payments.update');
+        Route::get('/payments', [AdminPaymentController::class, 'index'])->name('payments.index');
+        Route::get('/payments/edit/{payment}', [AdminPaymentController::class, 'edit'])->name('payments.edit');
+        Route::post('/payments/{payment}', [AdminPaymentController::class, 'update'])->name('payments.update');
         Route::get('/payment-customers/{id}', [CustomerController::class, 'show'])->name('staff.customers.show');
     }
 );
@@ -93,7 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/cars/{id}/book', [FrontendCarController::class, 'book'])->name('cars.book');
     Route::post('/rentals/{rental}/cancel', [FrontendRentalController::class, 'cancel'])->name('bookings.cancel');
     Route::post('/rentals/{rental}/payment-proof', [FrontendPaymentProofController::class, 'store'])->name('bookings.payment-proof.store');
-    Route::get('/payments/{payment}/proof', PaymentProofController::class)->name('payments.proof');
+    Route::get('/payments/{payment}/proof', PaymentProofDocumentController::class)->name('payments.proof');
 });
 
 require __DIR__.'/auth.php';

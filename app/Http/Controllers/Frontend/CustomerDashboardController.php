@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Services\BookingScheduleService;
 use App\Services\RentalLifecycleService;
-use App\Services\RentalAvailabilityService;
+use App\Services\Catalog\RentalAvailabilityService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
