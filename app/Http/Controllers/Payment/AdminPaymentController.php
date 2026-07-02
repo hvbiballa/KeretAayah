@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
-use App\Services\RentalLifecycleService;
+use App\Services\Booking\RentalLifecycleService;
 use App\Notifications\Payment\PaymentStatusUpdatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;

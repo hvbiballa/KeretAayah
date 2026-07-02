@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Booking;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AdminBookingNotification;
@@ -8,8 +8,8 @@ use App\Mail\BookConfirmMail;
 use App\Models\Car;
 use App\Models\Rental;
 use App\Models\User;
-use App\Services\BookingScheduleService;
-use App\Services\RentalLifecycleService;
+use App\Services\Booking\BookingScheduleService;
+use App\Services\Booking\RentalLifecycleService;
 use App\Services\Catalog\RentalAvailabilityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +38,7 @@ class RentalController extends Controller
 
         $this->rentalLifecycle->syncMany($rentals);
 
-        return Inertia::render('Frontend/MyBookingsPage', [
+        return Inertia::render('Booking/MyBookingsPage', [
             'rentals' => $rentals,
         ]);
     }
@@ -78,7 +78,7 @@ class RentalController extends Controller
                 ? __('booking.flash.car_maintenance')
                 : ($alreadyBooked ? __('booking.flash.already_booked') : null));
 
-        return Inertia::render('Frontend/BookingConfirmPage', [
+        return Inertia::render('Booking/BookingConfirmPage', [
             'car' => $car,
             'schedule' => [
                 'rental_method' => $schedule['rental_method'],
@@ -201,7 +201,7 @@ class RentalController extends Controller
             ->pluck('id')
             ->search($rental->id);
 
-        return Inertia::render('Frontend/BookingDetailPage', [
+        return Inertia::render('Booking/BookingDetailPage', [
             'rental' => $rental,
             'displayReference' => $displayIndex === false ? null : $displayIndex + 1,
         ]);
@@ -220,7 +220,7 @@ class RentalController extends Controller
             ->pluck('id')
             ->search($rental->id);
 
-        return Inertia::render('Frontend/BookingPaymentPage', [
+        return Inertia::render('Booking/BookingPaymentPage', [
             'rental' => $rental,
             'displayReference' => $displayIndex === false ? null : $displayIndex + 1,
         ]);

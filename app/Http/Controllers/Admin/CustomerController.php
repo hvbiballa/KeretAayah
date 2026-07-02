@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\User;
-use App\Services\RentalLifecycleService;
+use App\Services\Booking\RentalLifecycleService;
 use App\Support\VerificationDocumentData;
 use Illuminate\Http\Request;
 use Inertia\Inertia;

@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Booking\AdminRentalController;
+use App\Http\Controllers\Booking\RentalController as FrontendRentalController;
 use App\Http\Controllers\Catalog\AdminCarController;
 use App\Http\Controllers\Catalog\CarController as FrontendCarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Frontend\CustomerDashboardController;
-use App\Http\Controllers\Frontend\RentalController as FrontendRentalController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Payment\AdminPaymentController;
@@ -47,11 +47,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(
 
 
         // rental
-        Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
-        Route::get('/rentals/edit/{rental}', [RentalController::class, 'edit'])->name('rentals.edit');
-        Route::post('/rentals/{rental}', [RentalController::class, 'update'])->name('rentals.update');
-        Route::delete('/rentals/delete/{rental}', [RentalController::class, 'destroy'])->name('rentals.destroy');
-        // Route::get('/rentals/{id}', [RentalController::class, 'show'])->name('rentals.show');
+        Route::get('/rentals', [AdminRentalController::class, 'index'])->name('rentals.index');
+        Route::get('/rentals/edit/{rental}', [AdminRentalController::class, 'edit'])->name('rentals.edit');
+        Route::post('/rentals/{rental}', [AdminRentalController::class, 'update'])->name('rentals.update');
+        Route::delete('/rentals/delete/{rental}', [AdminRentalController::class, 'destroy'])->name('rentals.destroy');
+        // Route::get('/rentals/{id}', [AdminRentalController::class, 'show'])->name('rentals.show');
 
         // customers
         Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');

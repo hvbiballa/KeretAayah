@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Rental;
 use App\Models\User;
-use App\Services\RentalLifecycleService;
+use App\Services\Booking\RentalLifecycleService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Booking;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rental;
-use App\Services\RentalLifecycleService;
+use App\Services\Booking\RentalLifecycleService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class RentalController extends Controller
+class AdminRentalController extends Controller
 {
     public function __construct(
         private RentalLifecycleService $rentalLifecycle,
@@ -23,7 +23,7 @@ class RentalController extends Controller
         $rentals = Rental::with(['car', 'user', 'payment'])->latest()->get();
         $this->rentalLifecycle->syncMany($rentals);
 
-        return Inertia::render('Admin/RentalsPage', [
+        return Inertia::render('Booking/RentalsPage', [
             'rentals' => $rentals
         ]);
     }
@@ -60,7 +60,7 @@ class RentalController extends Controller
         $rental->load(['user', 'car', 'payment']);
         $this->rentalLifecycle->sync($rental);
 
-        return Inertia::render('Admin/RentalEdit', [
+        return Inertia::render('Booking/RentalEdit', [
             'rental' => $rental,
         ]);
     }

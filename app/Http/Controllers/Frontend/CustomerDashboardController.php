@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Services\BookingScheduleService;
-use App\Services\RentalLifecycleService;
+use App\Services\Booking\RentalLifecycleService;
 use App\Services\Catalog\RentalAvailabilityService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
