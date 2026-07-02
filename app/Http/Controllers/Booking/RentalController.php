@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Booking;
 
 use App\Http\Controllers\Controller;
-use App\Mail\AdminBookingNotification;
-use App\Mail\BookConfirmMail;
+use App\Mail\Notification\AdminBookingNotification;
+use App\Mail\Notification\BookConfirmMail;
 use App\Models\Car;
 use App\Models\Rental;
 use App\Models\User;
