@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Car;
 use App\Models\Rental;
@@ -25,7 +27,7 @@ class DashboardController extends Controller
         $this->rentalLifecycle->syncMany($rentals);
         $earnings = Rental::sum('total_cost');
 
-        return Inertia::render('Dashboard', [
+        return Inertia::render('Admin/Dashboard', [
             'cars' => $cars,
             'availableCars' => $availableCars,
             'customers' => $customers,

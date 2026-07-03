@@ -1,6 +1,7 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import CarAvailabilityCalendar from "@/Components/CarAvailabilityCalendar.vue";
+import FuelEstimator from "@/Components/FuelEstimator.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
 import { carStatusLabel, formatMYR, imageUrl, isCarAvailable } from "@/lib/car";
 import { useI18n } from "@/lib/i18n";
@@ -223,6 +224,12 @@ const { t } = useI18n();
                         </div>
 
                         <CarAvailabilityCalendar :car="car" />
+
+                        <div class="mt-6">
+                            <FuelEstimator
+                                :fuel-consumption-rate="car.fuel_consumption_rate"
+                            />
+                        </div>
 
                         <Link
                             v-if="isCarAvailable(car)"

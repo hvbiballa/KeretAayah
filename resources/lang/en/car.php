@@ -43,6 +43,13 @@ return [
         'type' => 'Type',
         'number_plate' => 'Number Plate',
     ],
+    'fuel_estimator' => [
+        'title' => 'Fuel Estimator',
+        'distance_label' => 'Planned trip distance (km)',
+        'distance_placeholder' => 'e.g. 120',
+        'estimate_result' => 'Estimated fuel needed: :litres litres',
+        'unavailable' => 'Fuel estimate unavailable for this car',
+    ],
     'admin' => [
         'manage_title' => 'Manage Cars',
         'manage_subtitle' => 'Add, edit, and delete cars from your fleet.',
@@ -57,6 +64,7 @@ return [
         'car_type' => 'Car Type',
         'daily_price' => 'Daily Rent Price (RM)',
         'hourly_price' => 'Hourly Rent Price (RM)',
+        'fuel_consumption_rate' => 'Fuel Consumption Rate (km/L)',
         'car_status' => 'Car Status',
         'car_images' => 'Car Images',
         'primary_image_note' => 'The first image is the primary image shown in car listings.',

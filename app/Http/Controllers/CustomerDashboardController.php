@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
-use App\Services\BookingScheduleService;
+use App\Services\Booking\BookingScheduleService;
 use App\Services\Booking\RentalLifecycleService;
 use App\Services\Catalog\RentalAvailabilityService;
 use Carbon\Carbon;

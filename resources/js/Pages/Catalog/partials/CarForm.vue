@@ -17,6 +17,7 @@ const form = useForm({
     car_type: props.car?.car_type || "",
     daily_rent_price: props.car?.daily_rent_price || "",
     hourly_rent_price: props.car?.hourly_rent_price || "",
+    fuel_consumption_rate: props.car?.fuel_consumption_rate || "",
     status: props.car?.status || "Available",
     images: [],
     removed_image_ids: [],
@@ -245,6 +246,28 @@ const handleSubmit = () => {
                                 class="text-red-500 text-sm mt-1"
                             >
                                 {{ form.errors.hourly_rent_price }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-foreground mb-1.5"
+                                >{{ $t("car.admin.fuel_consumption_rate") }}</label
+                            >
+                            <input
+                                type="number"
+                                v-model="form.fuel_consumption_rate"
+                                step="0.1"
+                                min="0"
+                                placeholder="e.g. 15.5"
+                                class="w-full px-4 py-3 rounded-xl border border-primary-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                            />
+                            <div
+                                v-if="form.errors.fuel_consumption_rate"
+                                class="text-red-500 text-sm mt-1"
+                            >
+                                {{ form.errors.fuel_consumption_rate }}
                             </div>
                         </div>
                     </div>

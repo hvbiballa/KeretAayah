@@ -1,5 +1,6 @@
 <script setup>
 import BookingVerificationGate from "@/Components/BookingVerificationGate.vue";
+import FuelEstimator from "@/Components/FuelEstimator.vue";
 import InfoHint from "@/Components/InfoHint.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Link, useForm, usePage } from "@inertiajs/vue3";
@@ -122,6 +123,8 @@ const submit = () => {
                                 </div>
                             </div>
                         </section>
+
+                        <FuelEstimator :fuel-consumption-rate="car.fuel_consumption_rate" />
 
                         <BookingVerificationGate
                             v-if="showVerificationGate"

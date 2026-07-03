@@ -43,6 +43,13 @@ return [
         'type' => 'Jenis',
         'number_plate' => 'Nombor Plat',
     ],
+    'fuel_estimator' => [
+        'title' => 'Anggaran Minyak',
+        'distance_label' => 'Jarak perjalanan dirancang (km)',
+        'distance_placeholder' => 'cth. 120',
+        'estimate_result' => 'Anggaran minyak diperlukan: :litres liter',
+        'unavailable' => 'Anggaran minyak tidak tersedia untuk kereta ini',
+    ],
     'admin' => [
         'manage_title' => 'Urus Kereta',
         'manage_subtitle' => 'Tambah, edit, dan padam kereta dalam senarai.',
@@ -57,6 +64,7 @@ return [
         'car_type' => 'Jenis Kereta',
         'daily_price' => 'Harga Sewa Harian (RM)',
         'hourly_price' => 'Harga Sewa Jam (RM)',
+        'fuel_consumption_rate' => 'Kadar Penggunaan Minyak (km/L)',
         'car_status' => 'Status Kereta',
         'car_images' => 'Imej Kereta',
         'primary_image_note' => 'Imej pertama akan menjadi imej utama dalam senarai kereta.',

@@ -19,6 +19,7 @@ class Car extends Model
         'car_type',
         'daily_rent_price',
         'hourly_rent_price',
+        'fuel_consumption_rate',
         'status',
     ];
 

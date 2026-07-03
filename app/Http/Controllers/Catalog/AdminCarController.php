@@ -47,6 +47,7 @@ class AdminCarController extends Controller
                 'car_type'  => 'required',
                 'daily_rent_price' => 'required|numeric|min:0',
                 'hourly_rent_price' => 'required|numeric|min:0',
+                'fuel_consumption_rate' => 'nullable|numeric|min:0',
                 'status' => ['required', Rule::in([
                     Car::STATUS_AVAILABLE,
                     Car::STATUS_UNDER_MAINTENANCE,
@@ -65,6 +66,7 @@ class AdminCarController extends Controller
             'car_type' => $request->input('car_type'),
             'daily_rent_price' => $request->input('daily_rent_price'),
             'hourly_rent_price' => $request->input('hourly_rent_price'),
+            'fuel_consumption_rate' => $request->input('fuel_consumption_rate'),
             'status' => $request->input('status'),
         ];
 
@@ -118,6 +120,7 @@ class AdminCarController extends Controller
                 'car_type'  => 'required',
                 'daily_rent_price' => 'required|numeric|min:0',
                 'hourly_rent_price' => 'required|numeric|min:0',
+                'fuel_consumption_rate' => 'nullable|numeric|min:0',
                 'status' => ['required', Rule::in([
                     Car::STATUS_AVAILABLE,
                     Car::STATUS_UNDER_MAINTENANCE,
@@ -140,6 +143,7 @@ class AdminCarController extends Controller
                 'car_type',
                 'daily_rent_price',
                 'hourly_rent_price',
+                'fuel_consumption_rate',
                 'status',
             ]) + [
                 'number_plate' => $this->normalizeNumberPlate($request->input('number_plate')),
