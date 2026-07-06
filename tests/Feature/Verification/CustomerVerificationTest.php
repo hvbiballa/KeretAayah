@@ -5,10 +5,13 @@ use App\Models\CustomerVerification;
 use App\Models\Rental;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Testing\AssertableInertia as Assert;
 
 beforeEach(function () {
+    Notification::fake();
+
     $this->user = User::factory()->create();
     $this->verification = $this->user->verification()->create();
 
@@ -27,8 +30,8 @@ beforeEach(function () {
 it('blocks pending customers from booking on the server', function () {
     $this->actingAs($this->user)
         ->get("/cars/{$this->car->id}/book")
-        ->assertRedirect(route('customer.verification.index'))
-        ->assertSessionHas('error');
+        ->assertRedirect(route('customer.dashboard'))
+        ->assertSessionHas('success');
 
     $this->actingAs($this->user)
         ->post('/rentals', [
@@ -53,9 +56,18 @@ it('blocks approved customers when a document has expired', function () {
     ]);
 
     $this->actingAs($this->user)
-        ->get("/cars/{$this->car->id}/book")
+        ->post('/rentals', [
+            'car_id' => $this->car->id,
+            'rental_method' => 'hourly',
+            'pickup_date' => '2030-06-10',
+            'pickup_time' => '09:00',
+            'return_date' => '2030-06-10',
+            'return_time' => '12:00',
+        ])
         ->assertRedirect(route('customer.verification.index'))
         ->assertSessionHas('error');
+
+    expect(Rental::count())->toBe(0);
 });
 
 it('stores replacement documents privately and returns the status to pending', function () {
@@ -150,8 +162,8 @@ it('creates a pending verification record during customer registration', functio
     $this->post('/register', [
         'name' => 'New Customer',
         'email' => 'new-customer@example.com',
-        'password' => 'password',
-        'password_confirmation' => 'password',
+        'password' => 'Password123!',
+        'password_confirmation' => 'Password123!',
     ]);
 
     $customer = User::where('email', 'new-customer@example.com')->firstOrFail();
@@ -218,10 +230,7 @@ it('renders the customer and admin verification pages', function () {
 
     $this->actingAs($this->user)
         ->get(route('customer.verification.index'))
-        ->assertOk()
-        ->assertInertia(fn (Assert $page) => $page
-            ->component('Verification/VerificationPage')
-            ->has('verification'));
+        ->assertRedirect(route('profile.edit').'#verification');
 
     $this->actingAs($admin)
         ->get(route('verifications.index'))
